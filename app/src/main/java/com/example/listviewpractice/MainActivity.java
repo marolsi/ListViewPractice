@@ -28,8 +28,16 @@ public class MainActivity extends AppCompatActivity {
         colors.add(new ColorItem("Black", Color.BLACK));
         colors.add(new ColorItem("Yellow", Color.YELLOW));
 
-        ListView listView = (ListView)findViewById(R.id.listView);
-        ArrayAdapter<ColorItem> adapter = new ColorAdapter(this, colors);
+        final ListView listView = (ListView)findViewById(R.id.listView);
+        final ArrayAdapter<ColorItem> adapter = new ColorAdapter(this, colors);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                colors.remove(i);
+                adapter.notifyDataSetChanged();
+                Log.d("debug", "Current size of colors: " + colors.size());
+            }
+        });
     }
 }
