@@ -1,6 +1,7 @@
 package com.example.listviewpractice;
 
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,7 +27,16 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                view.setBackgroundColor(Color.GRAY);
+                ColorDrawable c = (ColorDrawable) view.getBackground();
+                if (c != null) {
+                    if (c.getColor() == Color.GRAY) {
+                        view.setBackgroundColor(Color.WHITE);
+                    } else {
+                        view.setBackgroundColor(Color.GRAY);
+                    }
+                } else {
+                    view.setBackgroundColor(Color.WHITE);
+                }
             }
         });
     }
