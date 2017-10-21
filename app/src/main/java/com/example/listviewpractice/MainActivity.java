@@ -10,13 +10,24 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
-    ColorItem[] colors = {new ColorItem("Red", Color.RED),new ColorItem("Blue", Color.BLUE),new ColorItem("Green", Color.GREEN),
-            new ColorItem("White", Color.WHITE),new ColorItem("Black", Color.BLACK),new ColorItem("Yellow", Color.YELLOW)};
+    ArrayList<ColorItem> colors;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        colors = new ArrayList<>();
+        colors.add(new ColorItem("Red", Color.RED));
+        colors.add(new ColorItem("Blue", Color.BLUE));
+        colors.add(new ColorItem("Green", Color.GREEN));
+        colors.add(new ColorItem("White", Color.WHITE));
+        colors.add(new ColorItem("Black", Color.BLACK));
+        colors.add(new ColorItem("Yellow", Color.YELLOW));
+
         ListView listView = (ListView)findViewById(R.id.listView);
         ArrayAdapter<ColorItem> adapter = new ColorAdapter(this, colors);
         listView.setAdapter(adapter);

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
  */
 
 public class ColorAdapter extends ArrayAdapter<ColorItem> {
-    public ColorAdapter(Context context, ColorItem[] objects) {
+    public ColorAdapter(Context context, ArrayList<ColorItem> objects) {
         super(context, R.layout.color_list_item, objects);
     }
 
