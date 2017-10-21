@@ -11,33 +11,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
-
-    String[] colors = {"Red","Blue","Green","White","Black","Yellow"};
+    ColorItem[] colors = {new ColorItem("Red", Color.RED),new ColorItem("Blue", Color.BLUE),new ColorItem("Green", Color.GREEN),
+            new ColorItem("White", Color.WHITE),new ColorItem("Black", Color.BLACK),new ColorItem("Yellow", Color.YELLOW)};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         ListView listView = (ListView)findViewById(R.id.listView);
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
-                        android.R.id.text1, colors);
-
+        ArrayAdapter<ColorItem> adapter = new ColorAdapter(this, colors);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ColorDrawable c = (ColorDrawable) view.getBackground();
-                if (c != null) {
-                    if (c.getColor() == Color.GRAY) {
-                        view.setBackgroundColor(Color.WHITE);
-                    } else {
-                        view.setBackgroundColor(Color.GRAY);
-                    }
-                } else {
-                    view.setBackgroundColor(Color.WHITE);
-                }
-            }
-        });
     }
 }
